@@ -6,6 +6,7 @@ import { RotatedRect } from '../core/RotatedRect';
 import { Point } from '../core/Point';
 import { DistanceTypes } from './Misc';
 import { MatVector } from '../core/MatVector';
+import { EnclosingCircle } from '../core/EnclosingCircle';
 
 declare module StructuralAnalysisShapeDescriptors {
     enum ConnectedComponentsAlgorithmsTypes {
@@ -228,7 +229,7 @@ declare module StructuralAnalysisShapeDescriptors {
          * Finds a circle of the minimum area enclosing a 2D point set.
          * @param points Input vector of 2D points, stored in a Mat
          */
-        minEnclosingCircle(points: Mat): void;
+        minEnclosingCircle(points: Mat): EnclosingCircle;
         /**
          * Calculates all of the moments up to the third order of a polygon or rasterized shape
          * @param array Raster image (single-channel, 8-bit or floating-point 2D array) or an array ( 1×N or N×1 ) of 2D points (Point or Point2f ).

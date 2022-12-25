@@ -113,13 +113,14 @@ import { ObjectDetection as _ObjectDetection } from './ObjectDetection/ObjectDet
 import { _Motion, _Optflow, Optflow, Motion, ObjectTracking } from './video/track';
 import { MatVector } from './core/MatVector';
 import { dnn, dnn_Net } from './dnn/dnn';
+import { EnclosingCircle } from './core/EnclosingCircle';
 
 declare module opencv {
     interface VideoCapture {
         /**
          * Creates a VideoCapture object that reads from a source HTMLVideoElement
          */
-        new (videoSource: string | HTMLVideoElement): VideoCapture;
+        new(videoSource: string | HTMLVideoElement): VideoCapture;
         /**
          * Outputs a HTMLVideo elements frame to an instance of a Mat object
          * @param src cv.Mat to output to
@@ -128,66 +129,65 @@ declare module opencv {
     }
     abstract class cv
         implements
-            _DataTypes,
-            _ColorConversionCodes,
-            _MorphShapes,
-            _MorphTypes,
-            _SpecialFilter,
-            _BorderTypes,
-            _DecompTypes,
-            _CmpTypes,
-            _DftFlags,
-            _GemmFlags,
-            _NormTypes,
-            _ReduceTypes,
-            _RotateFlags,
-            _CovarFlags,
-            _SortFlags,
-            _InterpolationFlags,
-            _InterpolationMasks,
-            _WarpPolarMode,
-            _HersheyFonts,
-            _LineTypes,
-            _MarkerTypes,
-            _ColormapTypes,
-            _EdgeType,
-            _DistanceTypes,
-            _AdaptiveThresholdTypes,
-            _DistanceTransformLabelTypes,
-            _DistanceTransformMasks,
-            _FloodFillFlags,
-            _GrabCutClasses,
-            _GrabCutModes,
-            _ThresholdTypes,
-            Misc,
-            _HistCompMethods,
-            Histograms,
-            ColorMap,
-            DrawingFunctions,
-            GeometricImageTransformations,
-            CoreArray,
-            ImageFiltering,
-            ColorConversions,
-            _ConnectedComponentsAlgorithmsTypes,
-            _ConnectedComponentsTypes,
-            _ContourApproximationModes,
-            _RectanglesIntersectTypes,
-            _RetrievalModes,
-            _ShapeMatchModes,
-            StructuralAnalysisShapeDescriptors,
-            _HoughModes,
-            _LineSegmentDetectorModes,
-            FeatureDetection,
-            _TemplateMatchModes,
-            ObjectDetection,
-            ImageSegmentation,
-            _ObjectDetection,
-            _Motion,
-            _Optflow,
-            _Type,
-            ObjectTracking,
-            dnn
-    {
+        _DataTypes,
+        _ColorConversionCodes,
+        _MorphShapes,
+        _MorphTypes,
+        _SpecialFilter,
+        _BorderTypes,
+        _DecompTypes,
+        _CmpTypes,
+        _DftFlags,
+        _GemmFlags,
+        _NormTypes,
+        _ReduceTypes,
+        _RotateFlags,
+        _CovarFlags,
+        _SortFlags,
+        _InterpolationFlags,
+        _InterpolationMasks,
+        _WarpPolarMode,
+        _HersheyFonts,
+        _LineTypes,
+        _MarkerTypes,
+        _ColormapTypes,
+        _EdgeType,
+        _DistanceTypes,
+        _AdaptiveThresholdTypes,
+        _DistanceTransformLabelTypes,
+        _DistanceTransformMasks,
+        _FloodFillFlags,
+        _GrabCutClasses,
+        _GrabCutModes,
+        _ThresholdTypes,
+        Misc,
+        _HistCompMethods,
+        Histograms,
+        ColorMap,
+        DrawingFunctions,
+        GeometricImageTransformations,
+        CoreArray,
+        ImageFiltering,
+        ColorConversions,
+        _ConnectedComponentsAlgorithmsTypes,
+        _ConnectedComponentsTypes,
+        _ContourApproximationModes,
+        _RectanglesIntersectTypes,
+        _RetrievalModes,
+        _ShapeMatchModes,
+        StructuralAnalysisShapeDescriptors,
+        _HoughModes,
+        _LineSegmentDetectorModes,
+        FeatureDetection,
+        _TemplateMatchModes,
+        ObjectDetection,
+        ImageSegmentation,
+        _ObjectDetection,
+        _Motion,
+        _Optflow,
+        _Type,
+        ObjectTracking,
+        dnn {
         blobFromImage(
             image: Mat,
             scalefactor: number,
@@ -1563,7 +1563,7 @@ declare module opencv {
             parameter: number
         ): number;
         minAreaRect(points: Mat): RotatedRect;
-        minEnclosingCircle(points: Mat): void;
+        minEnclosingCircle(points: Mat): EnclosingCircle;
         moments(array: Mat): Moments;
         pointPolygonTest(contour: Mat, pt: Point, measureDist: boolean): number;
         CCL_DEFAULT: ConnectedComponentsAlgorithmsTypes.CCL_DEFAULT;
